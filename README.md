@@ -122,4 +122,4 @@ Sample
 //in method you could specify the http method that is required while making the request by remote client
 ```
 
-Step 7 . I have used postman rest client to test my url 
+Step 7 . I have used postman rest client to test my url  . I have checked in test.json file which you need to download and upload in your postman
