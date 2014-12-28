@@ -90,4 +90,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 Step 5 . In UrlMappings.groovy , you could specify different http method require for your different url
 Sample
 ```
+"/api/v1/anonymous/${username}"(controller:'test',action:'show', method:"GET")	"/api/v1/authentication/${username}"(controller:'test',action:'show2', method:"POST")
+//in method you could specify the http method that is required while making the request by remote client
 ```
