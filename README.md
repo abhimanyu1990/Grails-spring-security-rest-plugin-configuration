@@ -87,9 +87,30 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	'/**': 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter',                                          // Traditional chain
 ]
 ```
-Step 5 . In UrlMappings.groovy , you could specify different http method require for your different url
+Test 
+
+Step 5 . Create a Test controller 
+```
+package com.abhimanyu.example.auth
+
+class TestController {
+
+    def index() { }
+	
+	def show(){
+		return params.username  // accept field in url as param
+	}
+	
+	def show2(){
+		return request.getJson().body.username // accept json body in request
+	}
+}
+```
+Step 6 . In UrlMappings.groovy , you could specify different http method require for your different url
 Sample
 ```
-"/api/v1/anonymous/${username}"(controller:'test',action:'show', method:"GET")	"/api/v1/authentication/${username}"(controller:'test',action:'show2', method:"POST")
+"/api/v1/anonymous/${username}"(controller:'test',action:'show', method:"GET")	"/api/v1/authentication/**"(controller:'test',action:'show2', method:"POST")
 //in method you could specify the http method that is required while making the request by remote client
 ```
+
+Step 7 . I have used postman rest client to test my url 
