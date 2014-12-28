@@ -1,8 +1,8 @@
 Grails-spring-security-rest-plugin
 ==================================
 
-1. First you need to follow https://github.com/abhimanyu1990/Grails-Springsecurity-username-email-login to configure spring security in your application. 
-2. Now moodify your BuildConfig.groovy and add below line in plugin to install the spring security rest plugin
+Step 1. First you need to follow https://github.com/abhimanyu1990/Grails-Springsecurity-username-email-login to configure spring security in your application. 
+Step 2. Now moodify your BuildConfig.groovy and add below line in plugin to install the spring security rest plugin
 ```
 compile ":spring-security-rest:1.4.1.RC2", {
     excludes: 'spring-security-core'
@@ -10,7 +10,7 @@ compile ":spring-security-rest:1.4.1.RC2", {
 ```
 The above line will install spring security rest plugin in your application.
 
-3. Create a new domain AuthToken in your grails application , it will store authentication token when user login
+Step 3. Create a new domain AuthToken in your grails application , it will store authentication token when user login
 AuthToken.groovy
 ```
 class AuthToken {
@@ -23,7 +23,7 @@ class AuthToken {
 }
 
 ```
-4. Now we need to specify configuration details in config.groovy.
+Step 4. Now we need to specify configuration details in config.groovy.
 
 Enable rest login facility
 ```
@@ -78,11 +78,16 @@ Use below line enable or disable login request can contain username and passowrd
 ```
 grails.plugin.springsecurity.rest.login.useRequestParamsCredentials	= false
 ```
-To specify different url for anonymous access or require authentication
+To specify different url for anonymous access , to  require authentication
 
 ```
 grails.plugin.springsecurity.filterChain.chainMap = [
-	'/api/v1/logout': 'anonymousAuthenticationFilter', // allow anonymous access
-	'/api/v1/**': 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter', // Stateless chain , require authentication
+	'/api/v1/logout': 'anonymousAuthenticationFilter', //to allow anonymous access
+	'/api/v1/**': 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter', // Stateless chain
+	'/**': 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter',                                          // Traditional chain
 ]
+```
+Step 5 . In UrlMappings.groovy , you could specify different http method require for your different url
+Sample
+```
 ```
