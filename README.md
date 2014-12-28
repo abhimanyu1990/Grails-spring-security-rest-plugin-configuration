@@ -78,6 +78,12 @@ Use below line enable or disable login request can contain username and passowrd
 ```
 grails.plugin.springsecurity.rest.login.useRequestParamsCredentials	= false
 ```
+
+Specify header field that will contain the authorization token
+```
+grails.plugin.springsecurity.rest.token.validation.useBearerToken = false
+grails.plugin.springsecurity.rest.token.validation.headerName = 'X-Auth-Token'
+```
 To specify different url for anonymous access , to  require authentication
 
 ```
