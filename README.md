@@ -82,7 +82,7 @@ To specify different url for anonymous access , to  require authentication
 
 ```
 grails.plugin.springsecurity.filterChain.chainMap = [
-	'/api/v1/logout': 'anonymousAuthenticationFilter', //to allow anonymous access
+	'/api/v1/anonymous/**': 'anonymousAuthenticationFilter', //to allow anonymous access
 	'/api/v1/**': 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter', // Stateless chain
 	'/**': 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter',                                          // Traditional chain
 ]
