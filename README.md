@@ -99,23 +99,26 @@ Step 5 . Create a Test controller
 ```
 package com.abhimanyu.example.auth
 
+
+import org.springframework.security.access.annotation.Secured
 class TestController {
 
     def index() { }
 	
 	def show(){
-		return params.username  // accept field in url as param
+		render params.username
 	}
 	
+	@Secured("permitAll")
 	def show2(){
-		return request.getJson().body.username // accept json body in request
+		render request.getJSON().username
 	}
 }
 ```
 Step 6 . In UrlMappings.groovy , you could specify different http method require for your different url
 Sample
 ```
-"/api/v1/anonymous/${username}"(controller:'test',action:'show', method:"GET")	"/api/v1/authentication/**"(controller:'test',action:'show2', method:"POST")
+"/api/v1/anonymous/${username}"(controller:'test',action:'show', method:"GET")	"/api/v1/authentication"(controller:'test',action:'show2', method:"POST")
 //in method you could specify the http method that is required while making the request by remote client
 ```
 
