@@ -1,4 +1,4 @@
-Grails-spring-security-rest-plugin
+Configuring spring security plugin
 ==================================
 
 Step 1. First you need to follow https://github.com/abhimanyu1990/Grails-Springsecurity-username-email-login to configure spring security in your application. 
