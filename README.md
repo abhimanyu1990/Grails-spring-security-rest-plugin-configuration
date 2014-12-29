@@ -93,6 +93,19 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	'/**': 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter',                                          // Traditional chain
 ]
 ```
+Cors plugin is automatically installed by spring security rest plugin . To enable cors (resolve cors issue)
+```
+cors.enabled=true
+cors.url.pattern = '/api/*'
+cors.headers=[
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
+    'Access-Control-Allow-Headers': 'origin, authorization, accept, content-type, x-requested-with,X-Auth-Token',
+    'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS',
+    'Access-Control-Max-Age': 3600
+    ]
+
+```
 Test 
 
 Step 5 . Create a Test controller 
